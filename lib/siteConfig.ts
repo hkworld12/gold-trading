@@ -6,7 +6,7 @@
 export const siteConfig = {
   // 기본 정보
   siteName: '금 거래소',
-  siteUrl: 'https://your-domain.com', // TODO: Vercel 배포 후 실제 도메인으로 변경
+  siteUrl: 'https://gold-trading.vercel.app',
   description: '시세 기준 투명한 금 거래 플랫폼. 실시간 시세 비교와 합리적인 가격으로 금을 사고팔 수 있습니다.',
 
   // 연락처 정보
@@ -14,6 +14,8 @@ export const siteConfig = {
     phone: '010-1234-5678', // TODO: 실제 전화번호로 변경
     phoneDisplay: '010-1234-5678',
     kakaoChannel: 'http://pf.kakao.com/_yourID', // TODO: 실제 카카오톡 채널 URL로 변경
+    kakaoOpenChat: 'https://open.kakao.com/o/your-openchat-id', // TODO: 실제 오픈채팅 URL로 변경
+    kakaoLabel: '카톡으로 시세 문의 (오픈채팅)',
     email: 'contact@example.com', // TODO: 실제 이메일로 변경
   },
 

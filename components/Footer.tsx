@@ -36,16 +36,28 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* 연락처 */}
+          {/* 연락처 및 시세 문의 */}
           <div>
             <h3 className="text-white font-bold text-lg mb-4">연락처</h3>
-            <div className="space-y-2 text-sm">
+            <div className="space-y-2 text-sm mb-4">
               <p>전화: {siteConfig.contact.phoneDisplay}</p>
               <p>이메일: {siteConfig.contact.email}</p>
               <p className="pt-2 text-gray-400">{siteConfig.businessHours.weekday}</p>
               <p className="text-gray-400">{siteConfig.businessHours.saturday}</p>
               <p className="text-gray-400">{siteConfig.businessHours.sunday}</p>
             </div>
+
+            {/* 시세 문의 CTA */}
+            <a
+              href={siteConfig.contact.kakaoOpenChat}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={siteConfig.contact.kakaoLabel}
+              className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-white font-bold px-4 py-3 rounded-lg transition shadow-md text-sm"
+            >
+              <span className="text-lg">💬</span>
+              <span>시세 문의하기</span>
+            </a>
           </div>
         </div>
 

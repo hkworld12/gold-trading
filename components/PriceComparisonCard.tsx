@@ -86,24 +86,27 @@ export default function PriceComparisonCard() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="bg-gray-50 rounded-lg p-4">
-                <div className="text-sm text-gray-600 mb-1">타사 시세 범위</div>
+                <div className="text-sm text-gray-600 mb-1">타사 평균 매입가</div>
                 <div className="text-lg font-semibold text-gray-700">
-                  {price.competitorMin.toLocaleString()}원
-                  <span className="mx-2 text-gray-400">~</span>
-                  {price.competitorMax.toLocaleString()}원
+                  {Math.round((price.competitorMin + price.competitorMax) / 2).toLocaleString()}원
                 </div>
                 <div className="text-xs text-gray-500 mt-1">/g</div>
               </div>
 
-              <div className="bg-green-50 rounded-lg p-4 border-2 border-green-200">
+              <div className="bg-green-50 rounded-lg p-4 border-2 border-green-400 relative">
+                <div className="absolute -top-3 right-4">
+                  <span className="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                    최고가
+                  </span>
+                </div>
                 <div className="text-sm text-green-700 font-medium mb-1 flex items-center">
                   <span className="mr-1">🔼</span> 우리 매입가
                 </div>
                 <div className="text-2xl font-bold text-green-700">
                   {price.ourBuyPrice.toLocaleString()}원
                 </div>
-                <div className="text-xs text-green-600 mt-1">
-                  타사보다 높은 가격!
+                <div className="text-sm font-bold text-green-600 mt-2 bg-green-100 rounded px-2 py-1 inline-block">
+                  +{(price.ourBuyPrice - Math.round((price.competitorMin + price.competitorMax) / 2)).toLocaleString()}원 유리
                 </div>
               </div>
 
@@ -115,7 +118,7 @@ export default function PriceComparisonCard() {
                   {price.ourSellPrice.toLocaleString()}원
                 </div>
                 <div className="text-xs text-blue-600 mt-1">
-                  합리적인 가격!
+                  합리적인 가격
                 </div>
               </div>
             </div>

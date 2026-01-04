@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import FloatingCTA from "@/components/FloatingCTA";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -17,10 +18,11 @@ export default function RootLayout({
     <html lang="ko">
       <body className="antialiased bg-gray-50 flex flex-col min-h-screen">
         <Navigation />
-        <main className="flex-grow">
+        <main className="flex-grow pb-24 md:pb-0">
           {children}
         </main>
         <Footer />
+        <FloatingCTA />
       </body>
     </html>
   );

@@ -13,27 +13,30 @@ export default function ContactCTA() {
       </div>
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        {/* 카카오톡 오픈채팅 - Primary */}
         <a
-          href={telHref}
-          className="bg-white text-yellow-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-50 transition shadow-md flex items-center gap-2 min-w-[200px] justify-center"
-        >
-          <span className="text-2xl">📞</span>
-          <div className="text-left">
-            <div className="text-xs text-gray-600">전화 상담</div>
-            <div>{siteConfig.contact.phoneDisplay}</div>
-          </div>
-        </a>
-
-        <a
-          href={siteConfig.contact.kakaoChannel}
+          href={siteConfig.contact.kakaoOpenChat}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-yellow-400 text-gray-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-300 transition shadow-md flex items-center gap-2 min-w-[200px] justify-center"
+          aria-label={siteConfig.contact.kakaoLabel}
+          className="bg-white text-yellow-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-50 transition shadow-md flex items-center gap-2 min-w-[200px] justify-center"
         >
           <span className="text-2xl">💬</span>
           <div className="text-left">
-            <div className="text-xs text-gray-700">카카오톡 상담</div>
-            <div>1:1 문의하기</div>
+            <div className="text-xs text-gray-600">빠른 상담</div>
+            <div>{siteConfig.contact.kakaoLabel}</div>
+          </div>
+        </a>
+
+        {/* 전화 - Secondary */}
+        <a
+          href={telHref}
+          className="bg-yellow-400 text-gray-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-300 transition shadow-md flex items-center gap-2 min-w-[200px] justify-center"
+        >
+          <span className="text-2xl">📞</span>
+          <div className="text-left">
+            <div className="text-xs text-gray-700">전화 상담</div>
+            <div>{siteConfig.contact.phoneDisplay}</div>
           </div>
         </a>
       </div>

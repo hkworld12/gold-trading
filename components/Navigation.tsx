@@ -43,12 +43,20 @@ export default function Navigation() {
               FAQ
             </Link>
 
+            {/* Secondary Link - 시세 비교 */}
+            <Link
+              href="/#price-compare"
+              className="px-4 py-2 rounded-md text-sm font-medium hover:bg-yellow-700 transition hidden lg:block"
+            >
+              📊 시세 비교
+            </Link>
+
             {/* Primary CTA - 카톡 오픈채팅 */}
             <a
               href={siteConfig.contact.kakaoOpenChat}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={siteConfig.contact.kakaoLabel}
+              aria-label={siteConfig.cta.hero.primary}
               className="ml-2 bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-bold px-4 py-2 rounded-lg transition shadow-md flex items-center gap-1"
             >
               <span className="text-lg">💬</span>

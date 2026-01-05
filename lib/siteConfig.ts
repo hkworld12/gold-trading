@@ -15,8 +15,33 @@ export const siteConfig = {
     phoneDisplay: '010-1234-5678',
     kakaoChannel: 'http://pf.kakao.com/_yourID', // TODO: 실제 카카오톡 채널 URL로 변경
     kakaoOpenChat: 'https://open.kakao.com/o/your-openchat-id', // TODO: 실제 오픈채팅 URL로 변경
-    kakaoLabel: '카톡으로 시세 문의 (오픈채팅)',
+    kakaoLabel: '카톡으로 시세 문의',
     email: 'contact@example.com', // TODO: 실제 이메일로 변경
+  },
+
+  // CTA 라벨
+  cta: {
+    hero: {
+      primary: '오픈채팅 시세 문의',
+      secondary: '실시간 시세 비교 보기',
+    },
+    priceCheck: '내 예산으로 최종가격 체크하기',
+    offlineClass: '오프라인 강의 신청하기',
+  },
+
+  // 오프라인 강의
+  offlineClass: {
+    enabled: true,
+    title: '금 거래 제대로 배우기',
+    description: '수수료부터 시세 계산까지, 실전 금 거래 교육',
+    url: 'https://forms.gle/your-form-id', // TODO: 구글폼/노션/캘린들리 URL로 변경
+  },
+
+  // UTM 기본값
+  tracking: {
+    utmSource: 'landing',
+    utmMedium: 'cta',
+    utmCampaign: 'gold-trading',
   },
 
   // 영업 시간

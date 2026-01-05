@@ -5,8 +5,8 @@ import FloatingCTA from "@/components/FloatingCTA";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "금 거래소 - 시세 기준 투명한 금 거래",
-  description: "시세 기준 투명한 금 거래 플랫폼. 실시간 시세 비교와 합리적인 가격으로 금을 사고팔 수 있습니다.",
+  title: "금 시세 계산기 | 기준가 + 수수료 확인",
+  description: "같은 시세여도 수수료가 다르면 최종가격이 3~7% 차이납니다. 계산기로 미리 확인하고 물어보세요. 개인 프로젝트 · 정보 비대칭 해소 도구",
 };
 
 export default function RootLayout({

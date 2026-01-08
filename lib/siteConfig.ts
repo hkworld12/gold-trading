@@ -15,16 +15,18 @@ export const siteConfig = {
     phoneDisplay: '010-1234-5678',
     kakaoChannel: 'http://pf.kakao.com/_yourID', // TODO: 실제 카카오톡 채널 URL로 변경
     kakaoOpenChat: 'https://open.kakao.com/o/your-openchat-id', // TODO: 실제 오픈채팅 URL로 변경
-    kakaoLabel: '카톡으로 시세 문의',
+    kakaoLabel: '카톡으로 최종가격 확인',
     email: 'contact@example.com', // TODO: 실제 이메일로 변경
   },
 
   // CTA 라벨
   cta: {
     hero: {
-      primary: '오픈채팅 시세 문의',
-      secondary: '실시간 시세 비교 보기',
+      primary: '💬 카톡으로 최종가격 확인',
+      secondary: '직접 계산해보기',
     },
+    calculator: '💰 최종가격 계산하기',
+    resultCard: '💬 이 조건 그대로 카톡에 붙여넣고 문의하기',
     priceCheck: '내 예산으로 최종가격 체크하기',
     offlineClass: '오프라인 강의 신청하기',
   },

@@ -1,6 +1,6 @@
 'use client'
 
-import { Card, CardHeader, CardTitle, CardContent } from './ui/Card'
+import { Card } from './ui/Card'
 import { Button } from './ui/Button'
 import { siteConfig } from '@/lib/siteConfig'
 
@@ -28,86 +28,23 @@ function buildKakaoUrl(baseUrl: string, context: string) {
 }
 
 export default function FeeBreakdownCard({ result, showOfflineClass = false }: FeeBreakdownCardProps) {
-  // 계산 전 상태 - 투명성 메시지 + 예시 표시
+  // 계산 전 상태
   if (!result) {
     return (
-      <Card className="h-full">
-        <CardContent className="p-6">
-          <div className="text-center mb-6">
-            <div className="text-4xl mb-3">🔍</div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
-              왜 최종가격으로 비교해야 할까요?
-            </h3>
-            <p className="text-sm text-gray-600">
-              같은 기준가라도 수수료가 다르면<br />
-              실제 받는 금액이 크게 달라집니다
-            </p>
+      <Card className="h-full bg-surface-secondary">
+        <div className="p-6 h-full flex flex-col items-center justify-center text-center">
+          <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center mb-4 shadow-sm">
+            <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
           </div>
-
-          {/* 예시 Breakdown */}
-          <div className="space-y-3 mb-6">
-            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
-              예시: 금 100g 판매 시
-            </div>
-
-            {/* 기준가 */}
-            <div className="flex justify-between p-3 bg-gray-50 rounded-lg">
-              <span className="text-sm text-gray-600">기준가 합계</span>
-              <span className="text-sm font-semibold text-gray-900">10,000,000원</span>
-            </div>
-
-            {/* 수수료 5% */}
-            <div className="flex justify-between p-3 bg-red-50 rounded-lg border border-red-100">
-              <div>
-                <div className="text-sm font-medium text-red-900">수수료 5% 차감</div>
-                <div className="text-xs text-red-600">-500,000원</div>
-              </div>
-              <span className="text-base font-bold text-red-700">9,500,000원</span>
-            </div>
-
-            {/* 수수료 3% */}
-            <div className="flex justify-between p-3 bg-orange-50 rounded-lg border border-orange-100">
-              <div>
-                <div className="text-sm font-medium text-orange-900">수수료 3% 차감</div>
-                <div className="text-xs text-orange-600">-300,000원</div>
-              </div>
-              <span className="text-base font-bold text-orange-700">9,700,000원</span>
-            </div>
-
-            {/* 수수료 1% */}
-            <div className="flex justify-between p-3 bg-green-50 rounded-lg border border-green-100">
-              <div>
-                <div className="text-sm font-medium text-green-900">수수료 1% 차감</div>
-                <div className="text-xs text-green-600">-100,000원</div>
-              </div>
-              <span className="text-base font-bold text-green-700">9,900,000원</span>
-            </div>
-          </div>
-
-          {/* 핵심 인사이트 */}
-          <div className="p-4 bg-blue-50 rounded-lg border border-blue-100 mb-6">
-            <p className="text-sm font-medium text-blue-900">
-              💡 최대 <strong className="text-blue-700">400,000원</strong> 차이
-            </p>
-            <p className="text-xs text-blue-600 mt-1">
-              수수료만 비교해도 이만큼 차이가 납니다
-            </p>
-          </div>
-
-          {/* CTA */}
-          <div>
-            <a
-              href={buildKakaoUrl(siteConfig.contact.kakaoOpenChat, 'initial_breakdown')}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full"
-            >
-              <Button variant="kakao" size="lg" className="w-full">
-                💬 카톡으로 최종가격 확인
-              </Button>
-            </a>
-          </div>
-        </CardContent>
+          <h3 className="text-lg font-semibold text-text-primary mb-2">
+            계산 결과가 여기에 표시됩니다
+          </h3>
+          <p className="text-sm text-text-secondary max-w-xs">
+            왼쪽에서 거래 정보를 입력하고 계산하기 버튼을 누르세요
+          </p>
+        </div>
       </Card>
     )
   }
@@ -120,74 +57,67 @@ export default function FeeBreakdownCard({ result, showOfflineClass = false }: F
 
   return (
     <Card className="h-full">
-      <CardContent className="p-6">
-        {/* 기준가 합계 (회색) */}
-        <div className="mb-4 p-4 bg-gray-50 rounded-lg">
-          <div className="flex justify-between items-center">
-            <span className="text-sm text-gray-600">기준가 합계</span>
-            <span className="text-lg font-bold text-gray-900">
-              {result.base.toLocaleString()}원
-            </span>
+      <div className="p-6">
+        {/* 기준가 합계 */}
+        <div className="mb-6">
+          <div className="text-sm text-text-secondary mb-1">기준가 합계</div>
+          <div className="text-3xl font-bold text-text-primary">
+            {result.base.toLocaleString()}
+            <span className="text-lg font-normal text-text-muted ml-1">원</span>
           </div>
         </div>
 
-        {/* Wise 스타일 "Total included fees" 박스 */}
-        <div className="mb-6 p-4 bg-blue-50 rounded-lg border border-blue-100">
-          <div className="text-xs font-semibold text-blue-600 uppercase tracking-wide mb-2">
-            총 포함 비용 (Total included fees)
-          </div>
-          <div className="text-sm text-blue-900">
-            수수료 1% ~ 5%
-          </div>
-          <div className="text-xs text-blue-600 mt-1">
-            실제 받는 금액은 업체마다 다릅니다
-          </div>
-        </div>
+        {/* 구분선 */}
+        <div className="h-px bg-border-light mb-6" />
 
-        {/* 수수료별 최종가격 3가지 */}
+        {/* 수수료별 최종가격 */}
         <div className="space-y-3 mb-6">
-          <div className="flex justify-between items-center p-4 bg-red-50 rounded-lg border border-red-100">
+          <div className="text-xs font-medium text-text-muted uppercase tracking-wider mb-3">
+            수수료별 최종 금액
+          </div>
+
+          {/* 수수료 5% */}
+          <div className="flex justify-between items-center p-4 bg-surface-secondary rounded-xl">
             <div>
-              <div className="text-sm font-medium text-red-900">수수료 5% 차감</div>
-              <div className="text-xs text-red-600">-{feeAmount5.toLocaleString()}원</div>
+              <div className="text-sm font-medium text-text-primary">수수료 5%</div>
+              <div className="text-xs text-text-muted">-{feeAmount5.toLocaleString()}원</div>
             </div>
-            <div className="text-lg font-bold text-red-700">
+            <div className="text-lg font-semibold text-text-primary">
               {result.withFee5.toLocaleString()}원
             </div>
           </div>
 
-          <div className="flex justify-between items-center p-4 bg-orange-50 rounded-lg border border-orange-100">
+          {/* 수수료 3% */}
+          <div className="flex justify-between items-center p-4 bg-surface-secondary rounded-xl">
             <div>
-              <div className="text-sm font-medium text-orange-900">수수료 3% 차감</div>
-              <div className="text-xs text-orange-600">-{feeAmount3.toLocaleString()}원</div>
+              <div className="text-sm font-medium text-text-primary">수수료 3%</div>
+              <div className="text-xs text-text-muted">-{feeAmount3.toLocaleString()}원</div>
             </div>
-            <div className="text-lg font-bold text-orange-700">
+            <div className="text-lg font-semibold text-text-primary">
               {result.withFee3.toLocaleString()}원
             </div>
           </div>
 
-          <div className="flex justify-between items-center p-4 bg-green-50 rounded-lg border border-green-100">
+          {/* 수수료 1% - 하이라이트 */}
+          <div className="flex justify-between items-center p-4 bg-accent/10 rounded-xl border border-accent/20">
             <div>
-              <div className="text-sm font-medium text-green-900">수수료 1% 차감</div>
-              <div className="text-xs text-green-600">-{feeAmount1.toLocaleString()}원</div>
+              <div className="text-sm font-medium text-primary">수수료 1%</div>
+              <div className="text-xs text-primary/70">-{feeAmount1.toLocaleString()}원</div>
             </div>
-            <div className="text-lg font-bold text-green-700">
+            <div className="text-lg font-bold text-primary">
               {result.withFee1.toLocaleString()}원
             </div>
           </div>
         </div>
 
         {/* 핵심 인사이트 */}
-        <div className="mb-6 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
-          <p className="text-sm font-semibold text-yellow-900">
-            💡 최종가격 차이가 최대 <strong>{maxDifference.toLocaleString()}원</strong>까지 날 수 있습니다
-          </p>
-          <p className="text-xs text-yellow-700 mt-1">
-            그래서 &quot;최종가격&quot;으로 비교하는 게 중요합니다
+        <div className="mb-6 p-4 bg-primary/5 rounded-xl">
+          <p className="text-sm text-text-primary">
+            수수료에 따라 최대 <span className="font-bold text-primary">{maxDifference.toLocaleString()}원</span> 차이
           </p>
         </div>
 
-        {/* Primary CTA - 카카오톡 */}
+        {/* CTA */}
         <div className="space-y-3">
           <a
             href={buildKakaoUrl(siteConfig.contact.kakaoOpenChat, 'result_primary')}
@@ -195,48 +125,25 @@ export default function FeeBreakdownCard({ result, showOfflineClass = false }: F
             rel="noopener noreferrer"
             className="block w-full"
           >
-            <Button variant="kakao" size="lg" className="w-full text-base font-semibold">
-              {siteConfig.cta.resultCard}
+            <Button variant="kakao" size="lg" className="w-full">
+              카톡으로 최종가격 확인
             </Button>
           </a>
 
-          {/* Secondary CTAs */}
-          <div className="grid grid-cols-2 gap-2">
+          {showOfflineClass && siteConfig.offlineClass.enabled && (
             <a
-              href={buildKakaoUrl(siteConfig.contact.kakaoChannel, 'result_channel')}
+              href={siteConfig.offlineClass.url}
               target="_blank"
               rel="noopener noreferrer"
+              className="block w-full"
             >
-              <Button variant="secondary" size="sm" className="w-full">
-                카카오톡 채널
+              <Button variant="secondary" size="md" className="w-full">
+                {siteConfig.offlineClass.title}
               </Button>
             </a>
-            <a href={`mailto:${siteConfig.contact.email}`}>
-              <Button variant="secondary" size="sm" className="w-full">
-                이메일 문의
-              </Button>
-            </a>
-          </div>
-
-          {/* 오프라인 강의 CTA - props로 제어 */}
-          {showOfflineClass && siteConfig.offlineClass.enabled && (
-            <div className="mt-4 pt-4 border-t border-gray-100">
-              <p className="text-xs text-gray-500 mb-2">
-                이 개념을 60분에 끝내기
-              </p>
-              <a
-                href={siteConfig.offlineClass.url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button variant="secondary" size="sm" className="w-full">
-                  📚 {siteConfig.offlineClass.title}
-                </Button>
-              </a>
-            </div>
           )}
         </div>
-      </CardContent>
+      </div>
     </Card>
   )
 }

@@ -3,28 +3,38 @@ import { InputHTMLAttributes, forwardRef } from 'react'
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string
   error?: string
+  hint?: string
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, className = '', ...props }, ref) => {
+  ({ label, error, hint, className = '', ...props }, ref) => {
     return (
       <div className="w-full">
         {label && (
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-text-secondary mb-2">
             {label}
           </label>
         )}
         <input
           ref={ref}
-          className={`w-full px-4 py-3 border border-gray-300 rounded-xl
-            focus:ring-2 focus:ring-blue-500 focus:border-transparent
-            transition-shadow
-            ${error ? 'border-red-500' : ''}
-            ${className}`}
+          className={`
+            w-full px-4 py-3.5
+            bg-surface-secondary border-0 rounded-xl
+            text-text-primary text-base
+            placeholder:text-text-muted
+            shadow-input
+            focus:bg-white focus:shadow-input-focus focus:ring-0
+            transition-all duration-200
+            ${error ? 'ring-2 ring-red-500' : ''}
+            ${className}
+          `}
           {...props}
         />
+        {hint && !error && (
+          <p className="mt-1.5 text-xs text-text-muted">{hint}</p>
+        )}
         {error && (
-          <p className="mt-1 text-sm text-red-600">{error}</p>
+          <p className="mt-1.5 text-xs text-red-500">{error}</p>
         )}
       </div>
     )
